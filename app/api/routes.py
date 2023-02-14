@@ -14,7 +14,7 @@ token_auth = HTTPTokenAuth()
 def verifyPassword(username, password):
     user = User.query.filter_by(username=username).first()
     if user:
-        if check_password_hash(user.password, password):
+        if user.password == password:
             return user
 
 @token_auth.verify_token
